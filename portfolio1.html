@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Richarls Jolo D. Ibarra - IT Support Specialist & BSIT Graduate">
+    <title>Richarls Jolo D. Ibarra | IT Professional Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            /* Color Palette */
+            --primary: #0284c7; /* Sky Blue */
+            --primary-dark: #0369a1;
+            --secondary: #0f172a; /* Dark Slate */
+            --accent: #38bdf8;
+            --bg-light: #f8fafc;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        /* --- Typography --- */
+        h1, h2, h3, h4 {
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- Layout Utilities --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(2, 132, 199, 0.3);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        /* --- Header & Nav --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* --- Hero Section --- */
+        #hero {
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding-top: 70px;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-text h1 span {
+            color: var(--primary);
+        }
+
+        .hero-text p {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            width: 350px;
+            height: 350px;
+            object-fit: cover;
+            object-position: top; /* Ensures the face/upper body is prioritized */
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            box-shadow: 20px 20px 0px rgba(2, 132, 199, 0.1);
+            animation: morph 8s ease-in-out infinite;
+            background-color: #ddd;
+        }
+
+        @keyframes morph {
+            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        }
+
+        /* --- Social Icons Styles --- */
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: var(--white);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(2, 132, 199, 0.2);
+        }
+
+        /* --- Stats Banner --- */
+        .stats-banner {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 40px 0;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+
+        /* --- About & Skills --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .about-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            border-left: 5px solid var(--primary);
+        }
+
+        .skill-category {
+            margin-bottom: 25px;
+        }
+
+        .skill-category h4 {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background-color: #e0f2fe;
+            color: var(--primary-dark);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* --- Experience --- */
+        #experience {
+            background-color: var(--white);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: #cbd5e1;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 50px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 4px solid var(--white);
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+
+        .timeline-content {
+            background: var(--bg-light);
+            padding: 25px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-shadow);
+        }
+
+        /* --- Why Hire Me --- */
+        #why-hire {
+            background-color: var(--bg-light);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: #e0f2fe;
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin: 0 auto 20px;
+        }
+
+        /* --- Education --- */
+        #education {
+            background-color: var(--white);
+        }
+
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .edu-card {
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .edu-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .edu-card .school {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .edu-card .year {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .honor-badge {
+            display: inline-block;
+            background: #fff7ed;
+            color: #c2410c;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            width: fit-content;
+        }
+
+        /* --- Contact --- */
+        #contact {
+            background-color: var(--secondary);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact-content h2 {
+            color: var(--white);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        footer {
+            background-color: #020617;
+            color: #94a3b8;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 30px;
+            }
+
+            .hero-text p {
+                margin: 0 auto 30px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none; /* Simplification for single file */
+            }
+            
+            nav {
+                justify-content: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            /* Center social icons on mobile */
+            .hero-text .social-icons, .hero-text .btn-container {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Richarls Ibarra.</div>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#education">Education</a>
+                    <a href="#contact" class="btn btn-primary" style="padding: 8px 20px;">Hire Me</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h4>IT Support Specialist</h4>
+                    <h1>Hi, I'm <span>Richarls Jolo Ibarra</span></h1>
+                    <p>A hardworking and dedicated IT professional with experience in troubleshooting hardware, software, and network issues. I ensure your systems run smoothly so you can focus on your business.</p>
+                    
+                    <!-- Modified Section: Social Icons replacing Contact Me Button -->
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 15px;" class="btn-container">
+                        <a href="https://www.facebook.com/jolo.caliso.2025" target="_blank" class="social-icon" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/richarls-jolo-ibarra-48b228374/" target="_blank" class="social-icon" aria-label="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/richarlsjolo/Jolo-Ibarra" target="_blank" class="social-icon" aria-label="GitHub">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                    </div>
+                    <!-- End Modified Section -->
+
+                    <a href="#experience" class="btn btn-outline">View Experience</a>
+                </div>
+                <div class="hero-image">
+                    <!-- YOUR IMAGE IS HERE -->
+                    <img src="https://z-cdn-media.chatglm.cn/files/05212ec7-1253-4a5a-8281-353a05a80397.jpg?auth_key=1870006243-0195d155d4d944f996cf40103ca08dfc-0-f991e9bd20f05c948c2a631ebf6ca5f2" alt="Richarls Jolo Ibarra - Class of 2025">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Banner -->
+    <div class="stats-banner">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>75%+</h3>
+                    <p>Issues Resolved</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Dedication</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p>Learner Attitude</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About & Skills Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">Dedicated to solving technical problems and enhancing user experience.</p>
+            
+            <div class="about-grid">
+                <!-- Bio -->
+                <div>
+                    <div class="about-card">
+                        <h3>Professional Summary</h3>
+                        <p style="margin-top: 15px; color: var(--text-light);">
+                            I am a BSIT graduate at ICCT Colleges with valuable IT Technician internship experience. I am passionate about technology and its ability to improve daily operations. My background includes successfully managing routine system maintenance, software installations, and hardware configurations. 
+                        </p>
+                        <p style="margin-top: 15px; color: var(--text-light);">
+                            I pride myself on being a rapid learner who can quickly master new environments. My goal is to leverage my technical skills to support organizational growth and efficiency.
+                        </p>
+                    </div>
+                    
+                    <div style="margin-top: 30px;">
+                        <h3><i class="fa-solid fa-cake-candles" style="color: var(--primary); margin-right: 10px;"></i> Personal Details</h3>
+                        <ul style="margin-top: 15px; color: var(--text-main);">
+                            <li style="margin-bottom: 10px;"><strong>Location:</strong> Teresa, Rizal, Philippines</li>
+                            <li style="margin-bottom: 10px;"><strong>Civil Status:</strong> Single</li>
+                            <li><strong>Language:</strong> Filipino, English</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Skills -->
+                <div id="skills">
+                    <div class="skill-category">
+                        <h4><i class="fa-solid fa-laptop-code"></i> Hardware & Support</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Hardware Troubleshooting</span>
+                            <span class="skill-tag">Peripherals (Printers/Scanners)</span>
+                            <span class="skill-tag">Mobile Devices</span>
+                            <span class="skill-tag">System Configuration</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4><i class="fa-brands fa-windows"></i> Operating Systems</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Windows (Expert)</span>
+                            <span class="skill-tag">macOS (Foundational)</span>
+                            <span class="skill-tag">Linux (Foundational)</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4><i class="fa-solid fa-network-wired"></i> Networking & Dev</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">TCP/IP</span>
+                            <span class="skill-tag">Wi-Fi Config</span>
+                            <span class="skill-tag">Ethernet Troubleshooting</span>
+                            <span class="skill-tag">Python Basics</span>
+                            <span class="skill-tag">C++ Basics</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4><i class="fa-solid fa-user-check"></i> Soft Skills</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Communication</span>
+                            <span class="skill-tag">Adaptability</span>
+                            <span class="skill-tag">Critical Thinking</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Hire Me (Added Value Section) -->
+    <section id="why-hire">
+        <div class="container">
+            <h2 class="section-title">Why Hire Me?</h2>
+            <p class="section-subtitle">Beyond the resume, here is the value I bring to your team.</p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                    </div>
+                    <h3>Immediate Impact</h3>
+                    <p style="margin-top: 10px; color: var(--text-light);">
+                        With hands-on internship experience resolving over 75% of complex hardware malfunctions, I am ready to tackle technical challenges from day one.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3>Academic Excellence</h3>
+                    <p style="margin-top: 10px; color: var(--text-light);">
+                        A consistent achiever, I graduated with Honors in Senior High School and maintained dedication throughout my BSIT journey, proving my discipline.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-user-group"></i>
+                    </div>
+                    <h3>User-Focused Support</h3>
+                    <p style="margin-top: 10px; color: var(--text-light);">
+                        I excel at explaining complex technical solutions to non-technical individuals, ensuring staff and students can effectively utilize IT resources.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Work Experience</h2>
+            <p class="section-title" style="font-size: 1rem; font-weight: 400; color: var(--text-light);">A history of reliability and technical growth.</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Feb 2025 - June 2025</div>
+                    <div class="timeline-content">
+                        <h3>IT Support Intern</h3>
+                        <h4 style="font-weight: 500; color: var(--primary); margin-bottom: 10px;">ICCT Colleges - Antipolo</h4>
+                        <ul style="padding-left: 20px; list-style-type: disc; color: var(--text-light);">
+                            <li style="margin-bottom: 8px;">Successfully troubleshot and resolved over 75% of complex hardware and peripheral malfunctions, restoring critical college operations.</li>
+                            <li style="margin-bottom: 8px;">Implemented solutions for Windows and macOS issues, significantly improving user experience.</li>
+                            <li style="margin-bottom: 8px;">Managed timely software installation and configuration for staff and student computers.</li>
+                            <li>Addressed basic network connectivity issues for dozens of workstations.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <p class="section-subtitle">My academic foundation in Information Technology.</p>
+
+            <div class="edu-grid">
+                <!-- College -->
+                <div class="edu-card">
+                    <div>
+                        <h3>Bachelor of Science in Information Technology</h3>
+                        <div class="school">ICCT Colleges</div>
+                        <span class="year">2021 - 2025</span>
+                    </div>
+                </div>
+
+                <!-- Senior High -->
+                <div class="edu-card">
+                    <div>
+                        <h3>Science, Technology, Engineering, and Mathematics (STEM)</h3>
+                        <div class="school">Philsin College Rizal Inc.</div>
+                        <span class="year">2019 - 2021</span>
+                        <div class="honor-badge">Graduated with Honor</div>
+                    </div>
+                </div>
+
+                <!-- High School -->
+                <div class="edu-card">
+                    <div>
+                        <h3>Secondary Education</h3>
+                        <div class="school">Pantay National High School</div>
+                        <span class="year">2015 - 2019</span>
+                    </div>
+                </div>
+
+                <!-- Elementary -->
+                <div class="edu-card">
+                    <div>
+                        <h3>Primary Education</h3>
+                        <div class="school">Pantay Elementary School</div>
+                        <span class="year">2009 - 2015</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container contact-content">
+            <h2>Ready to Work Together?</h2>
+            <p style="max-width: 600px; margin: 0 auto; color: #cbd5e1;">
+                I am currently looking for opportunities in IT Support, Helpdesk, or Technical Assistance. 
+                Feel free to reach out via phone or email.
+            </p>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>0946 007 8312</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>richarlsjolo@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <span>Bgry. Dalig Carissa 2, Teresa, Rizal</span>
+                </div>
+            </div>
+
+            <a href="mailto:richarlsjolo@gmail.com" class="btn btn-primary" style="background-color: var(--white); color: var(--primary);">
+                <i class="fa-solid fa-paper-plane" style="margin-right: 8px;"></i> Send Email
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Richarls Jolo D. Ibarra. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
